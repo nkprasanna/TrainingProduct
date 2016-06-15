@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Prasanna Training Company";
+}
+
+@using (Html.BeginForm())
+{
+    <!--Begin Hidden field area-->
+    <!--End Hidden Area-->
+
+
+    <!--Begin Search area-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">Search For Products</h1>
+
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.Label("Product Name")
+                @Html.TextBox("SearchProductName","",
+               new  { @class="form-control"})
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button id="btnSearch" class="btn btn-sm btn-primary">Search</button>
+            <button id="btnReset" class="btn btn-sm btn-primary">Reset</button>
+        </div>
+    </div>
+    <!-- End Search area-->
+
+    <!-- Begin List Area-->
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Introduction Date</th>
+                    <th>Url</th>
+                    <th>Price</th>                    
+                </tr>
+            </thead>
+        </table>
+        
+    </div>
+
+    <!--End List Area-->
+
+}
+@section Scripts{
+    <script>
+    </script>
+    }

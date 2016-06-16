@@ -13,9 +13,7 @@ namespace PTCData
             Products = new List<TrainingProducts>();
             SearchEntity = new TrainingProducts();
             Entity = new TrainingProducts();
-
             Init();
-
         }
 
         private void Init()
@@ -24,10 +22,9 @@ namespace PTCData
             ListMode();
             ValidationErrors = new List<KeyValuePair<string, string>>();
             EventArgument = string.Empty;
-
         }
-        public TrainingProducts Entity { get; set; }
 
+        public TrainingProducts Entity { get; set; }
         public string EventCommand { get; set; }
         public List<TrainingProducts> Products { get; set; }
         public TrainingProducts SearchEntity { get; set; }
@@ -77,9 +74,11 @@ namespace PTCData
                     break;
             }
         }
+
         private void Save()
         {
             TrainingProductManager mgr = new TrainingProductManager();
+
             if (Mode == "Add")
             {
                 mgr.Insert(Entity);
@@ -88,7 +87,9 @@ namespace PTCData
             {
                 mgr.Update(Entity);
             }
+
             ValidationErrors = mgr.ValidationErrors;
+
             if (ValidationErrors.Count > 0)
             {
                 IsValid = false;
@@ -126,7 +127,7 @@ namespace PTCData
             IsValid = true;
             Entity = new TrainingProducts();
             Entity.IntroductionDate = DateTime.Now;
-            Entity.Url = "http://www.google.com";
+            Entity.Url = "http://";
             Entity.Price = 0;
             AddMode();
         }
@@ -154,7 +155,7 @@ namespace PTCData
             Get();
             ListMode();
         }
-       
+
 
         private void ResetSearch()
         {
@@ -164,7 +165,6 @@ namespace PTCData
         private void Get()
         {
             TrainingProductManager mgr = new TrainingProductManager();
-
             Products = mgr.Get(SearchEntity);
         }
     }

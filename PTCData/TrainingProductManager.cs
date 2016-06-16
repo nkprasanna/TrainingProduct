@@ -24,7 +24,6 @@ namespace PTCData
                 }
             }
             return (ValidationErrors.Count == 0);
-            
         }
         public TrainingProducts Get(int productId)
         {
@@ -32,14 +31,14 @@ namespace PTCData
             TrainingProducts ret = new TrainingProducts();
             //TODO: Call youre data access method here
             list = CreateMockData();
-            ret = list.Find(p => p.ProductID==productId);
+            ret = list.Find(p => p.ProductID == productId);
             return ret;
         }
         public bool Insert(TrainingProducts entity)
         {
             bool ret = false;
             ret = Validate(entity);
-            if(ret)
+            if (ret)
             {
                 //TODO: Create INSERT code
             }
@@ -49,12 +48,11 @@ namespace PTCData
         {
             bool ret = false;
             ret = Validate(entity);
-            if(ret)
+            if (ret)
             {
                 //TODO:create update code here 
             }
             return ret;
-
         }
         public bool Delete(TrainingProducts entity)
         {
@@ -82,9 +80,8 @@ namespace PTCData
                 IntroductionDate = Convert.ToDateTime("6/11/2015"),
                 Url = "http://bit.ly/lSNzc0i",
                 Price = Convert.ToDecimal(29.00)
-
-
             });
+
             ret.Add(new TrainingProducts()
             {
                 ProductID = 2,
@@ -92,9 +89,8 @@ namespace PTCData
                 IntroductionDate = Convert.ToDateTime("6/11/2015"),
                 Url = "http://bit.ly/lSNzc0i",
                 Price = Convert.ToDecimal(29.00)
-
-
             });
+
             ret.Add(new TrainingProducts()
             {
                 ProductID = 3,
@@ -102,9 +98,8 @@ namespace PTCData
                 IntroductionDate = Convert.ToDateTime("6/11/2015"),
                 Url = "http://bit.ly/lSNzc0i",
                 Price = Convert.ToDecimal(29.00)
-
-
             });
+
             ret.Add(new TrainingProducts()
             {
                 ProductID = 4,
@@ -112,9 +107,8 @@ namespace PTCData
                 IntroductionDate = Convert.ToDateTime("12/11/2015"),
                 Url = "http://bit.ly/lSNzc0i",
                 Price = Convert.ToDecimal(25.00)
-
-
             });
+
             ret.Add(new TrainingProducts()
             {
                 ProductID = 5,
@@ -122,9 +116,8 @@ namespace PTCData
                 IntroductionDate = Convert.ToDateTime("6/11/2015"),
                 Url = "http://bit.ly/lSNzc0i",
                 Price = Convert.ToDecimal(239.00)
-
-
             });
+
             ret.Add(new TrainingProducts()
             {
                 ProductID = 6,
@@ -132,10 +125,7 @@ namespace PTCData
                 IntroductionDate = Convert.ToDateTime("6/10/2014"),
                 Url = "http://bit.ly/lSNzc0i",
                 Price = Convert.ToDecimal(39.00)
-
-
             });
-
             return ret;
         }
     }

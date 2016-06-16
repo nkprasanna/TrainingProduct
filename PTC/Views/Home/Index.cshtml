@@ -1,6 +1,5 @@
 ﻿@model PTCData.TrainingProductViewModel
 
-
 @{
     ViewBag.Title = "Prasanna Training Company";
 }
@@ -13,23 +12,18 @@
     @Html.HiddenFor(m => m.Mode)
     <!--End Hidden Area-->
 
-
     <!--Begin Search area-->
     if (Model.IsSearchArearVisible)
     {
-
-
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h1 class="panel-title">Search For Products</h1>
-
             </div>
             <div class="panel-body">
                 <div class="form-group">
-
                     @Html.LabelFor(m => m.SearchEntity.ProductName, "Product Name")
                     @Html.TextBoxFor(m => m.SearchEntity.ProductName,
-               new { @class = "form-control" })
+                    new { @class = "form-control" })
                 </div>
             </div>
             <div class="panel-footer">
@@ -49,6 +43,7 @@
         </div>
     }
     <!-- End Search area-->
+
     <!--Begin Detail Area-->
     if (Model.IsDetailAreaVisible)
     {
@@ -59,6 +54,7 @@
             <div class="panel-body">
 
                 <!--Begin Message Area-->
+
                 <div class="row">
                     <div class="col-sm-12">
                         @if (!Model.IsValid)
@@ -74,9 +70,10 @@
                             </div>
                         }
                     </div>
-
                 </div>
+
                 <!-- End Message Area-->
+
                 <div class="form-group">
                     @Html.LabelFor(m => m.Entity.ProductName, "Product Name")
                     @Html.TextBoxFor(m => m.Entity.ProductName,
@@ -101,6 +98,7 @@
                                 new { @class = "for-control" })
                 </div>
             </div>
+
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-sm-12">
@@ -115,12 +113,15 @@
                         </button>
                     </div>
                 </div>
+
             </div>
         </div>
     }
 
     <!--End Detail Area-->
+
     <!-- Begin List Area-->
+
     if (Model.IsListArearVisible)
     {
         <div class="table-responsive">
@@ -144,7 +145,6 @@
                                    data-pdsa-val="@item.ProductID"
                                    class="btn btn-default btn-sm">
                                     <i class="glyphicon glyphicon-edit"></i>
-
                                 </a>
                             </td>
                             <td>@item.ProductName</td>
@@ -154,13 +154,12 @@
                             <td class="pdsa-action-button-column">
                                 <a href="#" data-pdsa-action="delete"
                                    data-pdsa-val="@item.ProductID"
-                                   onclick ="return confirm('Delete this product?');"
+                                   onclick="return confirm('Delete this product?');"
                                    class="btn btn-default btn-sm">
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </a>
                             </td>
                         </tr>
-
                     }
                 </tbody>
             </table>
@@ -168,14 +167,13 @@
         </div>
     }
     <!--End List Area-->
-
 }
+
 @section Scripts{
     <script>
         $(function () {
             $("[data-pdsa-action]").on("click", function (e) {
                 e.preventDefault();
-
                 $("#EventCommand").val($(this).data("pdsa-action"));
                 $("#EventArgument").val($(this).data("pdsa-val"));
                 $('form').submit();

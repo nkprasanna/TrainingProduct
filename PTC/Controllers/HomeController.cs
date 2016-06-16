@@ -16,6 +16,7 @@ namespace PTC.Controllers
             vm.HandleRequest();
             return View(vm);
         }
+
         [HttpPost]
         public ActionResult Index(TrainingProductViewModel vm)
         {
@@ -34,6 +35,5 @@ namespace PTC.Controllers
             }
             return View(vm);
         }
-
     }
 }

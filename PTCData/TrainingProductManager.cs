@@ -6,20 +6,49 @@ using System.Threading.Tasks;
 
 namespace PTCData
 {
-   public class TrainingProductManager
+    public class TrainingProductManager
     {
+        public TrainingProductManager()
+        {
+            ValidationErrors = new List<KeyValuePair<string, string>>();
+        }
+        public List<KeyValuePair<string, string>> ValidationErrors { get; set; }
+        public bool Validate(TrainingProducts entity)
+        {
+            ValidationErrors.Clear();
+            if (!string.IsNullOrEmpty(entity.ProductName))
+            {
+                if (entity.ProductName.ToLower() == entity.ProductName)
+                {
+                    ValidationErrors.Add(new KeyValuePair<string, string>("Product Name", "Product Name must not be all lower case"));
+                }
+            }
+            return (ValidationErrors.Count == 0);
+
+
+        }
+        public bool Insert(TrainingProducts entity)
+        {
+            bool ret = false;
+            ret = Validate(entity);
+            if(ret)
+            {
+                //TODO: Create INSERT code
+            }
+            return ret;
+        }
         public List<TrainingProducts> Get(TrainingProducts entity)
         {
             List<TrainingProducts> ret = new List<TrainingProducts>();
             //TODO:Add your data access method here 
             ret = CreateMockData();
-            if(!string.IsNullOrEmpty(entity.ProductName))
+            if (!string.IsNullOrEmpty(entity.ProductName))
             {
                 ret = ret.FindAll(p => p.ProductName.ToLower().StartsWith(entity.ProductName, StringComparison.CurrentCultureIgnoreCase));
             }
             return ret;
         }
-       private  List<TrainingProducts> CreateMockData()
+        private List<TrainingProducts> CreateMockData()
         {
             List<TrainingProducts> ret = new List<TrainingProducts>();
             ret.Add(new TrainingProducts()
@@ -29,7 +58,7 @@ namespace PTCData
                 IntroductionDate = Convert.ToDateTime("6/11/2015"),
                 Url = "http://bit.ly/lSNzc0i",
                 Price = Convert.ToDecimal(29.00)
-                
+
 
             });
             ret.Add(new TrainingProducts()

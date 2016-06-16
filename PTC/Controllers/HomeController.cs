@@ -17,7 +17,7 @@ namespace PTC.Controllers
             return View(vm);
         }
         [HttpPost]
-        public ActionResult Index(TrainingProductViewModel vm )
+        public ActionResult Index(TrainingProductViewModel vm)
         {
             vm.IsValid = ModelState.IsValid;
             vm.HandleRequest();
@@ -32,9 +32,7 @@ namespace PTC.Controllers
                     ModelState.AddModelError(item.Key, item.Value);
                 }
             }
-
             return View(vm);
-
         }
 
     }

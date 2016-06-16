@@ -24,8 +24,16 @@ namespace PTCData
                 }
             }
             return (ValidationErrors.Count == 0);
-
-
+            
+        }
+        public TrainingProducts Get(int productId)
+        {
+            List<TrainingProducts> list = new List<TrainingProducts>();
+            TrainingProducts ret = new TrainingProducts();
+            //TODO: Call youre data access method here
+            list = CreateMockData();
+            ret = list.Find(p => p.ProductID==productId);
+            return ret;
         }
         public bool Insert(TrainingProducts entity)
         {
@@ -36,6 +44,22 @@ namespace PTCData
                 //TODO: Create INSERT code
             }
             return ret;
+        }
+        public bool Update(TrainingProducts entity)
+        {
+            bool ret = false;
+            ret = Validate(entity);
+            if(ret)
+            {
+                //TODO:create update code here 
+            }
+            return ret;
+
+        }
+        public bool Delete(TrainingProducts entity)
+        {
+            //TODO Create delete code here 
+            return true;
         }
         public List<TrainingProducts> Get(TrainingProducts entity)
         {

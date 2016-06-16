@@ -23,6 +23,7 @@ namespace PTCData
             EventCommand = "list";
             ListMode();
             ValidationErrors = new List<KeyValuePair<string, string>>();
+            EventArgument = string.Empty;
 
         }
         public TrainingProducts Entity { get; set; }
@@ -36,6 +37,7 @@ namespace PTCData
         public bool IsValid { get; set; }
         public string Mode { get; set; }
         public List<KeyValuePair<string, string>> ValidationErrors { get; set; }
+        public string EventArgument { get; set; }
 
         public void HandleRequest()
         {
@@ -55,7 +57,14 @@ namespace PTCData
                     {
                         Get();
                     }
-
+                    break;
+                case "edit":
+                    IsValid = true;
+                    Edit();
+                    break;
+                case "delete":
+                    ResetSearch();
+                    Delete();
                     break;
                 case "add":
                     Add();
@@ -75,6 +84,10 @@ namespace PTCData
             {
                 mgr.Insert(Entity);
             }
+            else
+            {
+                mgr.Update(Entity);
+            }
             ValidationErrors = mgr.ValidationErrors;
             if (ValidationErrors.Count > 0)
             {
@@ -87,6 +100,10 @@ namespace PTCData
                 {
                     AddMode();
                 }
+                else
+                {
+                    EditMode();
+                }
             }
         }
 
@@ -97,6 +114,13 @@ namespace PTCData
             IsSearchArearVisible = false;
             Mode = "Add";
         }
+        private void EditMode()
+        {
+            IsDetailAreaVisible = true;
+            IsListArearVisible = false;
+            IsSearchArearVisible = false;
+            Mode = "Edit";
+        }
         private void Add()
         {
             IsValid = true;
@@ -105,6 +129,12 @@ namespace PTCData
             Entity.Url = "http://www.google.com";
             Entity.Price = 0;
             AddMode();
+        }
+        private void Edit()
+        {
+            TrainingProductManager mgr = new TrainingProductManager();
+            Entity = mgr.Get(Convert.ToInt32(EventArgument));
+            EditMode();
         }
 
         private void ListMode()
@@ -115,6 +145,16 @@ namespace PTCData
             IsSearchArearVisible = true;
             Mode = "List";
         }
+        private void Delete()
+        {
+            TrainingProductManager mgr = new TrainingProductManager();
+            Entity = new TrainingProducts();
+            Entity.ProductID = Convert.ToInt32(EventArgument);
+            mgr.Delete(Entity);
+            Get();
+            ListMode();
+        }
+       
 
         private void ResetSearch()
         {

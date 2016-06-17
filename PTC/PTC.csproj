@@ -194,6 +194,10 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PTCCommon\PTCCommon.csproj">
+      <Project>{a5286f91-3d82-4390-b32c-cdc417a65966}</Project>
+      <Name>PTCCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PTCData\PTCData.csproj">
       <Project>{1b19af38-f043-4054-a7e2-1d91ee1760f5}</Project>
       <Name>PTCData</Name>

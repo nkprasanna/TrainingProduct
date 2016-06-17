@@ -39,6 +39,10 @@
                     <i class="glyphicon glyphicon-plus"></i>
                     &nbsp;Add
                 </button>
+                <button id="btnPrasanna" class="btn btn-sm btn-primary" data-pdsa-action="prasanna">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    &nbsp;Add
+                </button>
             </div>
         </div>
     }
@@ -85,8 +89,9 @@
                     @Html.TextBoxFor(m => m.Entity.IntroductionDate,
                                 new { @class = "for-control" })
                 </div>
-
+                
                 <div class="form-group">
+                    
                     @Html.LabelFor(m => m.Entity.Url, "Url")
                     @Html.TextBoxFor(m => m.Entity.Url,
                                 new { @class = "for-control" })
@@ -163,6 +168,29 @@
                     }
                 </tbody>
             </table>
+            <table class="table table-condensed table-bordered table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>test1</th>
+                        <th>test2</th>
+                        <th>test3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i <= 10; i++)
+                    {
+                        <tr>
+
+                            <td>item @i</td>
+                            <td>item @i</td>
+                            <td>item @i</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
 
         </div>
     }

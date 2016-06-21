@@ -16,7 +16,9 @@ namespace PTC.Controllers
             vm.HandleRequest();
             return View(vm);
         }
-
+        //[ValidateAntiForgeryToken]
+        /*To aoid cross site scripting use anti forgery token now am just ignoring the tags or use HTML.Enocde*/
+        [ValidateInput (false)]
         [HttpPost]
         public ActionResult Index(TrainingProductViewModel vm)
         {
